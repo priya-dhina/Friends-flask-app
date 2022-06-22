@@ -1,0 +1,43 @@
+{% extends 'base.html' %} {% block body %}
+
+<h1>My List of Friends</h1>
+<hr />
+<h3>Be my friend:</h3>
+<form action="/add_friend" method="POST">
+  <label for="fname">First name:</label>
+  <input type="text" id="fname" name="fname" autofocus required />
+  <br />
+  <label for="lname">Last name:</label>
+  <input type="text" id="lname" name="lname" />
+  <br />
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" />
+  <br /><br />
+  <input type="submit" id="submit" value="I'll Be Your Friend" />
+  <input type="reset" value="Clear" />
+</form>
+<br />
+<br />
+
+<hr />
+<br />
+{% if friends %}
+<h3>My Friends</h3>
+<table id="friends">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Email Address</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {% for friend in friends %}
+    <tr>
+      <td>{{ friend.name }}</td>
+      <td>{{ friend.email }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endif %} {% endblock %}
